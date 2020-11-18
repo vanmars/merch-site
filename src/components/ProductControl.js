@@ -7,7 +7,11 @@ class ProductControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterProductList: [],
+      masterProductList: [
+        {name: "Item 1", description: "A description of Item 1.", quantity: 1},
+        {name: "Item 2", description: "A description of Item 2.", quantity: 2},
+        {name: "Item 3", description: "A description of Item 3.", quantity: 3},
+      ],
       selectedTicket: null,
       editing: false
     };
@@ -38,7 +42,7 @@ class ProductControl extends React.Component {
       buttonText = "Return to Product List"
 
     } else {
-      currentlyVisibleState = <ProductList />
+      currentlyVisibleState = <ProductList products = {this.state.masterProductList}/>
       buttonText = "Add New Product"
     }
 
