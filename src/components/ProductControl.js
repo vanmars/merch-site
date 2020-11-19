@@ -41,10 +41,10 @@ class ProductControl extends React.Component {
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
     console.log(newMasterProductList)
     this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false});
-
   }
+
   // Read Individual Product
-  handleSelectingTicket = (id) => {
+  handleSelectingProduct= (id) => {
     const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
     this.setState({selectedProduct: selectedProduct});
   }
@@ -53,9 +53,11 @@ class ProductControl extends React.Component {
   handleUpdatingProduct = (productToUpdate) => {
 
   }
-  // Delete Individual Product
-  handleDeletingProduct = (it) => {
 
+  // Delete Individual Product
+  handleDeletingProduct = (id) => {
+    const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
+    this.setState({masterProductList: newMasterProductList, selectedProduct: null})
   }
   
   render() {
@@ -66,6 +68,7 @@ class ProductControl extends React.Component {
     if (this.state.selectedProduct != null) {
       currentlyVisibleState = <ProductDetail 
         product = {this.state.selectedProduct}
+        onClickingDelete = {this.handleDeletingProduct}
       />
       buttonText = "Return to Ticket List"
 
@@ -78,7 +81,7 @@ class ProductControl extends React.Component {
     } else  {
       currentlyVisibleState = <ProductList 
         products = {this.state.masterProductList}
-        onProductSelection = {this.handleSelectingTicket}
+        onProductSelection = {this.handleSelectingProduct}
         />
       buttonText = "Add New Product"
     }
