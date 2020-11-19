@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import NewProductForm from './NewProductForm';
+import { v4 } from 'uuid'; 
 import ProductList from './ProductList';
+import NewProductForm from './NewProductForm';
+import UpdateProductForm from './UpdateProductForm';
+import ProductDetail from './ProductDetail';
 
 class ProductControl extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterProductList: [],
+      masterProductList: [
+        {name: "Item 1", description: "A description of item 1", quantity: "1", id: v4()},
+        {name: "Item 2", description: "A description of item 2", quantity: "2", id: v4()},
+        {name: "Item 3", description: "A description of item 3", quantity: "3", id: v4()},
+        {name: "Item 4", description: "A description of item 4", quantity: "4", id: v4()},
+      ],
       selectedProduct: null,
       editing: false
     };
@@ -15,9 +23,17 @@ class ProductControl extends React.Component {
 
   // Handle Visible Button Click Events
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedProduct != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedProduct: null,
+        editing: false
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   // Create New Product
@@ -28,22 +44,42 @@ class ProductControl extends React.Component {
 
   }
   // Read Individual Product
+  handleSelectingTicket = (id) => {
+    const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
+    this.setState({selectedProduct: selectedProduct});
+  }
   
   // Update Individual Product
+  handleUpdatingProduct = (productToUpdate) => {
 
+  }
   // Delete Individual Product
+  handleDeletingProduct = (it) => {
 
+  }
+  
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    // Conditional Rendering
-    if (this.state.formVisibleOnPage) {
+    // Individual Product
+    if (this.state.selectedProduct != null) {
+      currentlyVisibleState = <ProductDetail 
+        product = {this.state.selectedProduct}
+      />
+      buttonText = "Return to Ticket List"
+
+    // New Form
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProduct}/>
       buttonText = "Return to Product List"
-
-    } else {
-      currentlyVisibleState = <ProductList products = {this.state.masterProductList}/>
+    
+    // Product List
+    } else  {
+      currentlyVisibleState = <ProductList 
+        products = {this.state.masterProductList}
+        onProductSelection = {this.handleSelectingTicket}
+        />
       buttonText = "Add New Product"
     }
 

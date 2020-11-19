@@ -18,7 +18,6 @@ function NewProductForm(props) {
         formSubmissionHandler={handleNewProductFormSubmission} />
     </React.Fragment>
   )
-
 }
 
 NewProductForm.propTypes = {

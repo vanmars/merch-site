@@ -10,14 +10,19 @@ function ProductList(props) {
         <Product 
           name={product.name}
           description={product.description}
-          quantity={product.quantity} />
+          quantity={product.quantity} 
+          id={product.id}
+          key={product.id}
+          whenProductClicked = {props.onProductSelection}
+        />
       )}
     </React.Fragment>
   )
 }
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object)
+  products: PropTypes.arrayOf(PropTypes.object),
+  onProductSelection: PropTypes.func
 }
 
 export default ProductList;
