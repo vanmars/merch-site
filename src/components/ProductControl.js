@@ -17,7 +17,9 @@ class ProductControl extends React.Component {
         {name: "Item 4", description: "A description of item 4", quantity: "4", id: v4()},
       ],
       selectedProduct: null,
-      editing: false
+      editing: false,
+      buying: false,
+      restocking: false,
     };
   }
 
@@ -27,7 +29,9 @@ class ProductControl extends React.Component {
       this.setState({
         formVisibleOnPage: false,
         selectedProduct: null,
-        editing: false
+        editing: false,
+        buying: false,
+        restocking: false
       });
     } else {
       this.setState(prevState => ({
@@ -54,7 +58,6 @@ class ProductControl extends React.Component {
   
   // Update Individual Product
   handleUpdateClick = () => {
-    console.log("handleUpdateClick reached!");
     this.setState({editing: true});
   }
 
@@ -66,6 +69,25 @@ class ProductControl extends React.Component {
       selectedProduct: null
     });
   }
+
+  // Buy Item
+  handleBuyClick = () => {
+    this.setState({buying: true});
+  }
+
+  handleBuyingProduct = () => {
+
+  }
+
+  // Restock Item
+  handleRestockClick = () => {
+    this.setState({restocking: true});
+  }
+
+  handleRestockingProduct = () => {
+    
+  }
+
 
   // Delete Individual Product
   handleDeletingProduct = (id) => {
@@ -85,15 +107,34 @@ class ProductControl extends React.Component {
       console.log("render conditional reached");
       currentlyVisibleState = <UpdateProductForm
         product = {this.state.selectedProduct}
-        onProductUpdate={this.handleUpdatingProduct }
+        onProductUpdate={this.handleUpdatingProduct}
       />
       buttonText = "Return to Product List"
-    // Individual Product
+
+    // Buying
+    } else if (this.state.buying) {
+      currentlyVisibleState = <BuyProductForm
+        product = {this.state.selectedProduct}
+        onProductBuy = {this.handleBuyingProduct}
+      />
+      buttonText = "Return to Ticket List"
+
+    // Restocking
+    } else if (this.state.restocking) {
+      currentlyVisibleState = <RestockProductForm
+        product = {this.state.selectedProduct}
+        onProductRestock = {this.handleRestockingProduct}
+      />
+      buttonText = "Return to Ticket List"
+
+    // View Individual Product
     } else if (this.state.selectedProduct != null) {
       currentlyVisibleState = <ProductDetail 
         product = {this.state.selectedProduct}
         onClickingDelete = {this.handleDeletingProduct}
         onClickingUpdate = {this.handleUpdateClick}
+        onClickingBuy = {this.handleBuyClick }
+        onClickingRestock = {this.handleRestockClick }
       />
       buttonText = "Return to Ticket List"
 
