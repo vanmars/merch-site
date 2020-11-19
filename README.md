@@ -28,8 +28,8 @@ Create a widget that shows the number of items in the cart. This widget should b
 ## Setup/Installation Requirements
 
 * Navigate to the directory in which you would like to clone this project.
-* Run `git clone ` in terminal.
-* Run `cd ` to navigate into new project directory.
+* Run `git clone https://github.com/vanmars/merch-site.git` in terminal.
+* Run `cd merch-site` to navigate into new project directory.
 * Open the cloned repo in a text editor of your choice.
 * Run `npm install` to download all dependencies.
 * Run `npm start` to start a live server and view projec in the browser.
