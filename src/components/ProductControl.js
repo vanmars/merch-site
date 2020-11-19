@@ -40,7 +40,10 @@ class ProductControl extends React.Component {
   handleAddingNewProduct = (newProduct) => {
     const newMasterProductList = this.state.masterProductList.concat(newProduct);
     console.log(newMasterProductList)
-    this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false});
+    this.setState({
+      masterProductList: newMasterProductList, 
+      formVisibleOnPage: false
+    });
   }
 
   // Read Individual Product
@@ -50,35 +53,59 @@ class ProductControl extends React.Component {
   }
   
   // Update Individual Product
-  handleUpdatingProduct = (productToUpdate) => {
+  handleUpdateClick = () => {
+    console.log("handleUpdateClick reached!");
+    this.setState({editing: true});
+  }
 
+  handleUpdatingProduct = (productToUpdate) => {
+    const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToUpdate);
+    this.setState({
+      masterProductList: updatedMasterProductList, 
+      editing: false, 
+      selectedProduct: null
+    });
   }
 
   // Delete Individual Product
   handleDeletingProduct = (id) => {
     const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
-    this.setState({masterProductList: newMasterProductList, selectedProduct: null})
+    this.setState({
+      masterProductList: newMasterProductList, 
+      selectedProduct: null
+    });
   }
   
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
+    // Update Form
+    if (this.state.editing) {
+      console.log("render conditional reached");
+      currentlyVisibleState = <UpdateProductForm
+        product = {this.state.selectedProduct}
+        onProductUpdate={this.handleUpdatingProduct }
+      />
+      buttonText = "Return to Product List"
     // Individual Product
-    if (this.state.selectedProduct != null) {
+    } else if (this.state.selectedProduct != null) {
       currentlyVisibleState = <ProductDetail 
         product = {this.state.selectedProduct}
         onClickingDelete = {this.handleDeletingProduct}
+        onClickingUpdate = {this.handleUpdateClick}
       />
       buttonText = "Return to Ticket List"
 
     // New Form
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProduct}/>
+      currentlyVisibleState = <NewProductForm 
+        onNewProductCreation={this.handleAddingNewProduct}
+      />
       buttonText = "Return to Product List"
-    
+   
     // Product List
-    } else  {
+    } else {
       currentlyVisibleState = <ProductList 
         products = {this.state.masterProductList}
         onProductSelection = {this.handleSelectingProduct}
