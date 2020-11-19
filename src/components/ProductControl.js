@@ -7,12 +7,8 @@ class ProductControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterProductList: [
-        {name: "Item 1", description: "A description of Item 1.", quantity: 1},
-        {name: "Item 2", description: "A description of Item 2.", quantity: 2},
-        {name: "Item 3", description: "A description of Item 3.", quantity: 3},
-      ],
-      selectedTicket: null,
+      masterProductList: [],
+      selectedProduct: null,
       editing: false
     };
   }
@@ -25,7 +21,12 @@ class ProductControl extends React.Component {
   }
 
   // Create New Product
+  handleAddingNewProduct = (newProduct) => {
+    const newMasterProductList = this.state.masterProductList.concat(newProduct);
+    console.log(newMasterProductList)
+    this.setState({masterProductList: newMasterProductList, formVisibleOnPage: false});
 
+  }
   // Read Individual Product
   
   // Update Individual Product
@@ -38,7 +39,7 @@ class ProductControl extends React.Component {
 
     // Conditional Rendering
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewProductForm />
+      currentlyVisibleState = <NewProductForm onNewProductCreation={this.handleAddingNewProduct}/>
       buttonText = "Return to Product List"
 
     } else {

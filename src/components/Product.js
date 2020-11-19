@@ -15,7 +15,8 @@ function Product(props) {
 Product.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
-  quantity: PropTypes.number,
+  quantity: PropTypes.string,
+  id: PropTypes.string
 }
 
 export default Product;
