@@ -37,7 +37,10 @@ Create a widget that shows the number of items in the cart. This widget should b
 
 ## Known Bugs
 
-_There are no known bugs at this time._
+_There are no known bugs at this time. But the following items could be improved:_
+
+* Add styling
+* Include form checks so that users can't enter non-numbers or negative numbers for product quantities.
 
 ## Support and Contact Details
 
