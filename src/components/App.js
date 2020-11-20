@@ -4,10 +4,14 @@ import ProductControl from './ProductControl';
 
 function App() {
   return (
-    <React.Fragment>
-      <Header />
-      <ProductControl />
-    </React.Fragment>
+    <div class="container mb-5">
+      <div class="jumbotron text-center bg-info">
+        <Header />
+      </div>
+      <div class="text-center">
+        <ProductControl />
+      </div>
+    </div>
   );
 }
 

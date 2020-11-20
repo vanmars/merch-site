@@ -3,9 +3,9 @@ import React from 'react';
 function Header() {
   return (
     <React.Fragment>
-      <h1>Fake Store</h1>
+      <h1 class="display-3">Fake Store</h1>
       <hr/>
-      <p>Just Buy It!</p>
+      <p class="lead">Just Buy It!</p>
     </React.Fragment>
   )
 }

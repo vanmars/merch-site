@@ -100,7 +100,6 @@ class ProductControl extends React.Component {
     })
   }
 
-
   // Delete Individual Product
   handleDeletingProduct = (id) => {
     const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
@@ -169,7 +168,8 @@ class ProductControl extends React.Component {
     return(
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <hr />
+        <button class="btn btn-dark" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     )
   }
