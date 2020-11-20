@@ -40,6 +40,7 @@ Create a widget that shows the number of items in the cart. This widget should b
 _There are no known bugs at this time. But the following items could be improved:_
 
 * Add styling
+* Enable sorting of master product list on display page
 * Include form checks so that users can't enter non-numbers or negative numbers for product quantities.
 
 ## Support and Contact Details

@@ -13,10 +13,10 @@ class ProductControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       masterProductList: [
-        {name: "Item 1", description: "A description of item 1", quantity: "1", id: v4()},
-        {name: "Item 2", description: "A description of item 2", quantity: "2", id: v4()},
-        {name: "Item 3", description: "A description of item 3", quantity: "3", id: v4()},
-        {name: "Item 4", description: "A description of item 4", quantity: "4", id: v4()},
+        {name: "Item A", description: "A description of item A", quantity: "1", id: v4()},
+        {name: "Item B", description: "A description of item B", quantity: "2", id: v4()},
+        {name: "Item C", description: "A description of item C", quantity: "3", id: v4()},
+        {name: "Item D", description: "A description of item D", quantity: "4", id: v4()}
       ],
       selectedProduct: null,
       editing: false,
