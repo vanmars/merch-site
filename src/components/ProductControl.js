@@ -91,8 +91,13 @@ class ProductControl extends React.Component {
     this.setState({restocking: true});
   }
 
-  handleRestockingProduct = () => {
-    
+  handleRestockingProduct = (productToRestock) => {
+    const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToRestock);
+    this.setState({
+      masterProductList: updatedMasterProductList,
+      restocking: false,
+      selectedProduct: null
+    })
   }
 
 

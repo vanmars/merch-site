@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function BuyProductForm (props) {
-  const {product, onProductBuy } = props
+  const {product, onProductBuy } = props;
   let quantity = product.quantity;
   if (quantity === "Out of Stock") {
     quantity = 0;
