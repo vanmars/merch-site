@@ -14,7 +14,7 @@ function RestockProductForm (props) {
   function handleRestockProductFormSubmission (event) {
     event.preventDefault();
     let newQuantity = (quantity + parseInt(event.target.restockQuantity.value)).toString();
-    if (newQuantity === "0") {
+    if (parseInt(newQuantity) <= 0) {
       newQuantity = "Out of Stock"
     };
     onProductRestock({name: product.name, description: product.description, quantity: newQuantity, id: product.id});
