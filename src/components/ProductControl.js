@@ -4,6 +4,8 @@ import ProductList from './ProductList';
 import NewProductForm from './NewProductForm';
 import UpdateProductForm from './UpdateProductForm';
 import ProductDetail from './ProductDetail';
+import BuyProductForm from './BuyProductForm';
+import RestockProductForm from './RestockProductForm';
 
 class ProductControl extends React.Component {
   constructor(props){
@@ -75,8 +77,13 @@ class ProductControl extends React.Component {
     this.setState({buying: true});
   }
 
-  handleBuyingProduct = () => {
-
+  handleBuyingProduct = (productToBuy) => {
+    const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToBuy);
+    this.setState({
+      masterProductList: updatedMasterProductList,
+      buying: false,
+      selectedProduct: null
+    })
   }
 
   // Restock Item

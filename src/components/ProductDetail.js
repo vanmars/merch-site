@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 
 function ProductDetail(props) {
   const { product, onClickingDelete, onClickingUpdate, onClickingBuy, onClickingRestock } = props;
+  let buyButton;
+  if (product.quantity !== "Out of Stock"){
+    buyButton = <button onClick={() => onClickingBuy(product.id)}>Buy</button>
+  }
+ 
+
   return(
     <React.Fragment>
       <h1>Product Detail</h1>
@@ -10,7 +16,7 @@ function ProductDetail(props) {
       <h3>{product.description}</h3>
       <h4>{product.quantity}</h4>
       <hr />
-      <button onClick={() => onClickingBuy(product.id)}>Buy</button>
+      {buyButton}
       <button onClick={() => onClickingRestock(product.id)}>Restock</button>
       <button onClick={() => onClickingUpdate(product.id)}>Update</button>
       <button onClick={() => onClickingDelete(product.id)}>Delete</button>
