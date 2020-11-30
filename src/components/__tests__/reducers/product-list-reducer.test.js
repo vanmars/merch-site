@@ -26,7 +26,7 @@ describe('productListReducer', () => {
   test('should successfully delete product from masterProductList', () => {
     action = {
       type: 'DELETE_PRODUCT',
-      id: 2
+      id: 1
     };
     expect(productListReducer(currentState, action)).toEqual({
       2: {
