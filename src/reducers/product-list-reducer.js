@@ -10,6 +10,8 @@ export default (state = {}, action) => {
           id: id
         }
       })
+    case 'DELETE_PRODUCT':
+      return state;
     default:
       return state;
   };
