@@ -104,13 +104,30 @@ class ProductControl extends React.Component {
   }
 
   handleBuyingProduct = (productToBuy) => {
-    const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToBuy);
+    const { dispatch } = this.props;
+    const { name, description, quantity, id }  = productToBuy;
+    const action = {
+      type: 'ADD_PRODUCT',
+      name: name,
+      description: description,
+      quantity: quantity,
+      id: id
+    }
+    dispatch(action);
     this.setState({
-      masterProductList: updatedMasterProductList,
       buying: false,
       selectedProduct: null
     })
   }
+  
+  // handleBuyingProduct = (productToBuy) => {
+  //   const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToBuy);
+  //   this.setState({
+  //     masterProductList: updatedMasterProductList,
+  //     buying: false,
+  //     selectedProduct: null
+  //   })
+  // }
 
   // Restock Item
   handleRestockClick = () => {
