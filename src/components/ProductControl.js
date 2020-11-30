@@ -6,6 +6,7 @@ import UpdateProductForm from './UpdateProductForm';
 import ProductDetail from './ProductDetail';
 import BuyProductForm from './BuyProductForm';
 import RestockProductForm from './RestockProductForm';
+import { connect } from  'react-redux';
 
 class ProductControl extends React.Component {
   constructor(props){
@@ -175,4 +176,5 @@ class ProductControl extends React.Component {
   }
 }
 
+ProductControl = connect()(ProductControl);
 export default ProductControl;
