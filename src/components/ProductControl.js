@@ -111,12 +111,21 @@ class ProductControl extends React.Component {
 
   // Delete Individual Product
   handleDeletingProduct = (id) => {
-    const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
-    this.setState({
-      masterProductList: newMasterProductList, 
-      selectedProduct: null
-    });
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_PRODUCT',
+      id: id
+    }
+    dispatch(action);
+    this.setState({selectedProduct: null});
   }
+  // handleDeletingProduct = (id) => {
+  //   const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
+  //   this.setState({
+  //     masterProductList: newMasterProductList, 
+  //     selectedProduct: null
+  //   });
+  // }
   
   render() {
     let currentlyVisibleState = null;
