@@ -130,7 +130,6 @@ class ProductControl extends React.Component {
   // }
 
   // Restock Item
-  
   handleRestockClick = () => {
     this.setState({restocking: true});
   }
@@ -171,6 +170,7 @@ class ProductControl extends React.Component {
     dispatch(action);
     this.setState({selectedProduct: null});
   }
+
   // handleDeletingProduct = (id) => {
   //   const newMasterProductList = this.state.masterProductList.filter(product => product.id !== id);
   //   this.setState({
@@ -244,6 +244,11 @@ class ProductControl extends React.Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    masterProductList: state
+  };
+}
 
-ProductControl = connect()(ProductControl);
+ProductControl = connect(mapStateToProps)(ProductControl);
 export default ProductControl;
