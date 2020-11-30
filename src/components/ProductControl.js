@@ -39,13 +39,27 @@ class ProductControl extends React.Component {
 
   // Create New Product
   handleAddingNewProduct = (newProduct) => {
-    const newMasterProductList = this.state.masterProductList.concat(newProduct);
-    console.log(newMasterProductList)
-    this.setState({
-      masterProductList: newMasterProductList, 
-      formVisibleOnPage: false
-    });
+    const { dispatch } = this.props;
+    const { name, description, quantity, id } = newProduct;
+    const action = {
+      type: 'ADD_PRODUCT',
+      name: name,
+      description: description,
+      quantity: quantity,
+      id: id
+    }
+    dispatch(action);
+    this.setState({formVisibleOnPage: false});
   }
+
+  // handleAddingNewProduct = (newProduct) => {
+  //   const newMasterProductList = this.state.masterProductList.concat(newProduct);
+  //   console.log(newMasterProductList)
+  //   this.setState({
+  //     masterProductList: newMasterProductList, 
+  //     formVisibleOnPage: false
+  //   });
+  // }
 
   // Read Individual Product
   handleSelectingProduct= (id) => {
