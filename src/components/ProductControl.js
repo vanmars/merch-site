@@ -64,7 +64,7 @@ class ProductControl extends React.Component {
 
   // Read Individual Product
   handleSelectingProduct= (id) => {
-    const selectedProduct = this.state.masterProductList.filter(product => product.id === id)[0];
+    const selectedProduct = this.props.masterProductList[id];
     this.setState({selectedProduct: selectedProduct});
   }
   
@@ -186,7 +186,6 @@ class ProductControl extends React.Component {
 
     // Update Form
     if (this.state.editing) {
-      console.log("render conditional reached");
       currentlyVisibleState = <UpdateProductForm
         product = {this.state.selectedProduct}
         onProductUpdate={this.handleUpdatingProduct}
@@ -230,7 +229,7 @@ class ProductControl extends React.Component {
     // Product List
     } else {
       currentlyVisibleState = <ProductList 
-        products = {this.state.masterProductList}
+        products = {this.props.masterProductList}
         onProductSelection = {this.handleSelectingProduct}
         />
       buttonText = "Add New Product"
