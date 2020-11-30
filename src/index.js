@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ReactReduxContext } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from './reducers/product-list-reducer';
+import { Provider } from 'react-redux';
 
 const store = createStore(reducer);
 

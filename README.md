@@ -8,7 +8,7 @@ _18 November 2020_
 
 ## Description
 
-_This is an exercise for Epidocodus to practice making a React website with full CRUD functionality. The original instructions include:_
+_This is an exercise for Epidocodus to practice making a React website with full CRUD functionality and then refactoring it to use Redux. The original instructions include:_
 
 Build a website for selling merchandise for a band, author, sports team, or any other purveyor that interests you.
 
@@ -51,8 +51,8 @@ _Connect with me at vamariestewart@gmail.com with ideas to improve this project.
 ## Technologies Used
 
 * HTML
-* CSS
-* JavaScript/React
+* CSS/Bootstrap
+* JavaScript/React/Redux
 * Webpack
 * NPM
 
