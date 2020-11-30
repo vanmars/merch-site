@@ -7,6 +7,7 @@ import ProductDetail from './ProductDetail';
 import BuyProductForm from './BuyProductForm';
 import RestockProductForm from './RestockProductForm';
 import { connect } from  'react-redux';
+import PropTypes from 'prop-types';
 
 class ProductControl extends React.Component {
   constructor(props){
@@ -244,6 +245,11 @@ class ProductControl extends React.Component {
     )
   }
 }
+
+ProductControl.propTypes = {
+  masterProductList: PropTypes.object
+}
+
 const mapStateToProps = state => {
   return {
     masterProductList: state
