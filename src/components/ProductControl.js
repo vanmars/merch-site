@@ -119,7 +119,7 @@ class ProductControl extends React.Component {
       selectedProduct: null
     })
   }
-  
+
   // handleBuyingProduct = (productToBuy) => {
   //   const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToBuy);
   //   this.setState({
@@ -130,18 +130,36 @@ class ProductControl extends React.Component {
   // }
 
   // Restock Item
+  
   handleRestockClick = () => {
     this.setState({restocking: true});
   }
 
   handleRestockingProduct = (productToRestock) => {
-    const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToRestock);
+    const { dispatch } = this.props;
+    const { name, description, quantity, id }  = productToRestock;
+    const action = {
+      type: 'ADD_PRODUCT',
+      name: name,
+      description: description,
+      quantity: quantity,
+      id: id
+    }
+    dispatch(action);
     this.setState({
-      masterProductList: updatedMasterProductList,
       restocking: false,
       selectedProduct: null
     })
   }
+
+  // handleRestockingProduct = (productToRestock) => {
+  //   const updatedMasterProductList = this.state.masterProductList.filter(product => product.id !== this.state.selectedProduct.id).concat(productToRestock);
+  //   this.setState({
+  //     masterProductList: updatedMasterProductList,
+  //     restocking: false,
+  //     selectedProduct: null
+  //   })
+  // }
 
   // Delete Individual Product
   handleDeletingProduct = (id) => {
